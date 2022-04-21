@@ -1,5 +1,5 @@
 {
-  "name": "@gunnarssongroup/scroller",
+  "name": "@gunnarssongroup/gsapscrolltrigger-helper",
   "version": "0.0.1",
   "author": "B. Gunnarsson",
   "homepage": "https://github.com/bgunnarsson/gg-scroller",
@@ -10,6 +10,9 @@
   "types": "build/types/index.d.ts",
   "engines": {
     "node": "16.14.2"
+  },
+  "dependencies": {
+    "gsap": "^3.8.0"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
