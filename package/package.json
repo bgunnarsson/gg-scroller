@@ -1,18 +1,15 @@
 {
   "name": "@gunnarssongroup/scrolltrigger-helper",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "B. Gunnarsson",
   "homepage": "https://github.com/bgunnarsson/gg-scroller",
   "description": "GSAP ScrollTrigger Helper",
-  "url" : "https://github.com/bgunnarsson/gg-scroller/issues",
-  "email" : "packages@bgunnarsson.com",
+  "url": "https://github.com/bgunnarsson/gg-scroller/issues",
+  "email": "packages@bgunnarsson.com",
   "main": "build/index.js",
   "types": "build/types/index.d.ts",
   "engines": {
     "node": "16.14.2"
-  },
-  "dependencies": {
-    "gsap": "^3.8.0"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
