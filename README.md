@@ -1,4 +1,8 @@
-# _NPM Package Starter_
+# _Scroller_
+
+GSAP ScrollTrigger Helper
+
+---
 
 ### `Project Setup`
 
