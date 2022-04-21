@@ -21,6 +21,8 @@ interface ICreateTriggers {
   hasScrub?: boolean
 }
 
+// TODO: Add more types
+
 export class GGScrollTrigger {
   scrollTrigger;
   options;
@@ -60,7 +62,7 @@ export class GGScrollTrigger {
     }
   }
 
-  createTriggers(
+  create(
     trigger: HTMLElement,
     animation: any,
     {
