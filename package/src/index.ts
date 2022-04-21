@@ -21,89 +21,85 @@ interface ICreateTriggers {
   hasScrub?: boolean
 }
 
-// interface IGGScrollerReturn {
+export class GGScrollTrigger {
+  scrollTrigger;
+  options;
 
-// }
-
-export const GGScroller = (
-  ScrollTrigger,
-  options = {
-    markers: false,
+  constructor(scrollTrigger, options = { markers: false }) {
+    this.scrollTrigger = scrollTrigger
+    this.options = options
   }
-) => {
-  const object = {
-    setOptions(
-      trigger: HTMLElement,
+
+  setOptions(
+    trigger: HTMLElement,
+    {
+      animation,
+      enter,
+      enterBack,
+      leave,
+      leaveBack,
+      start = 'top 80%',
+      end = 'top bottom',
+      scrub = false,
+    }: IScrollOptions,
+
+    type: string = 'default',
+  ) {
+    return {
+      trigger,
+      animation,
+      start: type === 'return' ? 'top 100%' : start, // enter and leaveback
+      end, // leave and enterback
+      markers: this.options.markers ? { startColor: 'red', endColor: 'green', fontSize: '18px', fontWeight: 'bold', indent: 20 } : false,
+      scrub,
+
+      onEnter: () => enter && enter(),
+      onLeaveBack: () => leaveBack && leaveBack(),
+      onLeave: () => leave && leave(),
+      onEnterBack: () => enterBack && enterBack(),
+    }
+  }
+
+  createTriggers(
+    trigger: HTMLElement,
+    animation: any,
+    {
+      targets = [],
+      removeClasses = false,
+      hasScrub = false,
+    }: ICreateTriggers = null
+  ): void {
+
+    this.scrollTrigger.create(this.setOptions(
+      trigger,
       {
-        animation,
-        enter,
-        enterBack,
-        leave,
-        leaveBack,
-        start = 'top 80%',
-        end = 'top bottom',
-        scrub = false,
-      }: IScrollOptions,
-  
-      type: string = 'default',
-    ) {
-      return {
-        trigger,
-        animation,
-        start: type === 'return' ? 'top 100%' : start, // enter and leaveback
-        end, // leave and enterback
-        markers: options.markers ? { startColor: 'red', endColor: 'green', fontSize: '18px', fontWeight: 'bold', indent: 20 } : false,
-        scrub,
-  
-        onEnter: () => enter && enter(),
-        onLeaveBack: () => leaveBack && leaveBack(),
-        onLeave: () => leave && leave(),
-        onEnterBack: () => enterBack && enterBack(),
+        enter: () => { animation.play() },
+        scrub: hasScrub
       }
-    },
-    createTriggers(
-      trigger: HTMLElement,
-      animation: any,
-      {
-        targets = [],
-        removeClasses = false,
-        hasScrub = false,
-      }: ICreateTriggers = null
-    ): void {
-  
-      ScrollTrigger.create(this.setOptions(
-        trigger,
-        {
-          enter: () => { animation.play() },
-          scrub: hasScrub
-        }
-      ))
-  
-      ScrollTrigger.create(this.setOptions(
-        trigger,
-        {
-          leaveBack: () => {
-            animation.progress(0).pause()
-            
-            // TODO: Add class support to this later
-            // if (removeClasses && targets !== undefined) {
-            //   Array.prototype.forEach.call(targets, item => {
-            //     if (item) {
-            //       if (item.classList.contains('text-reveal--ltt')) {
-            //         item.classList.remove(this.classes.reveal.ltt)
-            //       }
-            //       else {
-            //         item.classList.remove(this.classes.reveal.ltr)
-            //       }
-            //     }
-            //   })
-            // }
-          },
-        },
-        'return'
-      ))
-    },
-  }
+    ))
 
-  return object
+    this.scrollTrigger.create(this.setOptions(
+      trigger,
+      {
+        leaveBack: () => {
+          animation.progress(0).pause()
+          
+          // TODO: Add class support to this later
+          // if (removeClasses && targets !== undefined) {
+          //   Array.prototype.forEach.call(targets, item => {
+          //     if (item) {
+          //       if (item.classList.contains('text-reveal--ltt')) {
+          //         item.classList.remove(this.classes.reveal.ltt)
+          //       }
+          //       else {
+          //         item.classList.remove(this.classes.reveal.ltr)
+          //       }
+          //     }
+          //   })
+          // }
+        },
+      },
+      'return'
+    ))
+  }
 }

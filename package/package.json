@@ -1,6 +1,6 @@
 {
   "name": "@gunnarssongroup/scrolltrigger-helper",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": "B. Gunnarsson",
   "homepage": "https://github.com/bgunnarsson/gg-scroller",
   "description": "GSAP ScrollTrigger Helper",
@@ -61,7 +61,9 @@
   ],
   "license": "(MIT OR Apache-2.0)",
   "keywords": [
-    "Request Submit",
+    "GSAP",
+    "ScrollTrigger",
+    "Locomotive scroll",
     "JavaScript"
   ]
 }
