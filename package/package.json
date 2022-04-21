@@ -1,0 +1,64 @@
+{
+  "name": "@gunnarssongroup/fake-submit",
+  "version": "0.0.6",
+  "author": "B. Gunnarsson",
+  "homepage": "https://github.com/bgunnarsson/gg-fake-submit",
+  "description": "Submit helper",
+  "url" : "https://github.com/bgunnarsson/gg-fake-submit/issues",
+  "email" : "packages@bgunnarsson.com",
+  "main": "build/index.js",
+  "types": "build/types/index.d.ts",
+  "engines": {
+    "node": "16.14.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "@types/webpack": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/parser": "^4.31.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "es6-promise": "^4.2.8",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.24.0",
+    "file-loader": "^6.2.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.2",
+    "terser-webpack-plugin": "^5.1.4",
+    "ts-jest": "^27.1.4",
+    "ts-loader": "^9.2.5",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.6.3",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.50.0",
+    "webpack-bundle-analyzer": "^4.4.2",
+    "webpack-cli": "^4.7.2",
+    "webpack-merge": "^5.8.0"
+  },
+  "scripts": {
+    "build:wpck": "webpack --config ./webpack --mode=production",
+    "build": "npx tsc",
+    "clean": "rd /s /q build && webpack --config ./webpack --mode=production && tsc --outFile",
+    "build:types": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "test": "jest --config jestconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
+    "clean:pc": "rd /s /q node_modules && npm i",
+    "publish:git": ""
+  },
+  "files": [
+    "build/**/*"
+  ],
+  "license": "(MIT OR Apache-2.0)",
+  "keywords": [
+    "Request Submit",
+    "JavaScript"
+  ]
+}

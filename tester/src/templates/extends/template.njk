@@ -1,0 +1,21 @@
+{% from "components/overlayGrid.njk" import Overlay %}
+{% from "sections/header.njk" import Header %}
+{% from "sections/footer.njk" import Footer %}
+<!doctype html>
+<html lang="is">
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Vettvangur">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>
+      {{ page.title }}
+    </title>
+  </head>
+  <body class="body preload">
+    {{ Header() }}
+    <main>{% block Content %}{% endblock %}</main>
+    {{ Footer() }}
+    {{ Overlay() }}
+  </body>
+</html>

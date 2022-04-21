@@ -1,0 +1,20 @@
+
+{% macro Button(props) %}
+
+  {% set buttonClasses = [
+    "button button--default",
+    "button--hollow" if props.isHollowDark,
+    props.class
+  ] | join(" ") %}
+
+  <a
+    href="{{ props.link }}" 
+    class="{{ buttonClasses }}"
+  >
+
+      {% if props.noText == false %}
+        <span class="button__text">{{ props.text }}</span>
+      {% endif %}
+
+  </a>
+{% endmacro %}

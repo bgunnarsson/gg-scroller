@@ -1,0 +1,55 @@
+// Fonts
+$font-sizes: (
+	global: 100%,
+	large: rem(24),
+	medium: rem(21),
+	base: rem(16), 
+	small: rem(14),
+	xsmall: rem(12),
+);
+
+$line-heights: (
+	default: rem(24),
+	large: rem(26),
+	medium: rem(29),
+	base: rem(32),
+	small: rem(22),
+	xsmall: rem(16),
+);
+
+// ! some fonts have different weight numbers so this is in here to mitigate that if you encounter a font family that has a different number for e.g. bold, semi-bold or whatever. 
+$font-weights: (
+	thin: 100,
+	extra-light: 200,
+	light: 300,
+	regular: 400,
+	medium: 500,
+	semi-bold: 600,
+	bold: 700,
+	extra-bold: 800,
+	black: 900,
+);
+
+$fonts: (
+	text--default: (
+    '[Font Name]',
+		'Arial',
+		sans-serif,
+	),
+);
+
+@function font($key) {
+	@return map-get($fonts, $key);
+}
+
+@function font-size($key) {
+	@return map-get($font-sizes, $key);
+}
+
+@function weight($key) {
+	@return map-get($font-weights, $key);
+}
+
+@function line-height($key) {
+	@return map-get($line-heights, $key);
+}

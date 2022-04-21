@@ -1,0 +1,23 @@
+
+{% macro Overlay(props) %}
+
+  <div class="overlay-grid overlay-grid--show" aria-hidden="true" data-show="false">
+      <div class="container">
+          <div class="grid grid--gap-horizontal grid--align-start">
+              {% for i in range(0, 12) -%}
+                <div class="overlay-grid__column"></div>
+              {%- endfor %}
+          </div>
+      </div>
+  </div>
+
+  <button type="button" class="overlay-grid__button overlay-grid__button--active">
+      <svg width="612" height="484" viewBox="0 0 612 484" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M375.258 296.82L407.898 353.43L612 0.10199H546.618L375.258 296.82Z" fill="white" />
+          <path d="M324.156 208.182L357 265.302L510.102 0.10199H444.312L324.156 208.182Z" fill="white" />
+          <path d="M611.388 427.176H0V483.888H611.388V427.176Z" fill="white" />
+          <path d="M309.876 56.61L204 240.006L98.124 56.61H309.876ZM408 0H0L204 353.328L408 0Z" fill="white" />
+      </svg>
+  </button>
+
+{% endmacro %}

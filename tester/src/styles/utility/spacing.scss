@@ -1,0 +1,29 @@
+.spacing--large {
+  @include mqBetween(phone-xs, desktop-sm) {
+    margin: rem(40) 0;
+  }
+
+  @include mq(desktop-lg) {
+    margin: rem(120) 0;
+  }
+}
+
+.spacing--small {
+  @include mqBetween(phone-xs, desktop-sm) {
+    margin: rem(30) 0;
+  }
+
+  @include mq(desktop-lg) {
+    margin: rem(60) 0;
+  }
+}
+
+.spacing--xsmall {
+  @include mqBetween(phone-xs, desktop-sm) {
+    margin: rem(15) 0;
+  }
+
+  @include mq(desktop-lg) {
+    margin: rem(30) 0;
+  }
+}

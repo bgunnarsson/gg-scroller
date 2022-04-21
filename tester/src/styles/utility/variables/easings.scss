@@ -1,0 +1,11 @@
+$easings: (
+  cubic-in-out: cubic-bezier(0.645, 0.045, 0.355, 1),
+  cubic-in: cubic-bezier(0.32, 0, 0.67, 0),
+  cubic-out: cubic-bezier(0.33, 1, 0.68, 1),
+  expo-in-out: cubic-bezier(0.9, 0.05, 0.2, 1),
+  expo-out: cubic-bezier(0.16, 1, 0.3, 1),
+);
+
+@function ease($key) {
+	@return map-get($easings, $key);
+}

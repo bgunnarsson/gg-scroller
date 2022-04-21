@@ -1,0 +1,10 @@
+$gutters: (
+  xlarge: rem(40),
+  large: rem(30),
+  medium: rem(20),
+  small: rem(10),
+);
+
+@function gutter($key) {
+  @return map-get($gutters, $key);
+}

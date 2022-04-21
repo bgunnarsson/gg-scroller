@@ -1,0 +1,12 @@
+// Website specific typography styles
+
+// p {
+//   @include font-size(base);
+// }
+
+@font-face {
+  font-family: 'PlayfairDisplay';
+  src: url('../assets/fonts/PlayfairDisplay-Bold.ttf') format('tff');
+  font-weight: weight(bold);
+  font-style: normal;
+}

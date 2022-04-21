@@ -1,0 +1,16 @@
+@mixin card-base() {
+  background: color(gray--light);
+  border: 1px solid color(grey--border);
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: box-shadow(reset);
+  
+  transition: border-color .4s ease-in-out, box-shadow .4s ease-in-out;
+
+  @include mq(desktop-sm) {
+    &:hover {
+      border-color: color(text--default);
+      @include shadow-outline(color(grey--border));
+    }
+  }
+}

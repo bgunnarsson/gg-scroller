@@ -1,0 +1,12 @@
+@import 'utility/reset';
+@import 'utility/edit-page';
+@import 'utility/overlay-grid';
+@import 'utility/spacing';
+
+// @import 'libs/**/*.scss'; // Uncomment this if you have libraries
+
+@import 'global/**/*.scss';
+@import 'sections/**/*.scss';
+@import 'components/**/*.scss';
+@import 'blocks/**/*.scss';
+// @import 'store/**/*.scss'; // Uncomment this when adding store styles

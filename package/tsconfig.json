@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "jsx": "react",
+    "baseUrl": "./",
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [
+      "dom",
+      "es5",
+      "es2015.promise"
+    ],
+    "forceConsistentCasingInFileNames": false,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noImplicitReturns": false,
+    "noImplicitThis": true,
+    "preserveSymlinks": false,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "build/types",
+    "suppressImplicitAnyIndexErrors": true,
+    "strictNullChecks": false,
+    "preserveConstEnums": true,
+    "outDir": "./build/"
+  },
+  "include": [
+    "./src/index.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "webpack",
+    "**/__tests__/*",
+    "./build/**/*"
+  ]
+}

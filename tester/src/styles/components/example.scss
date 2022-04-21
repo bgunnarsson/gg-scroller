@@ -1,0 +1,74 @@
+.example__list {
+  display: grid;
+
+  @include mqBetween(phone-xs, tablet) {
+    gap: gutter(medium);
+  }
+  
+  @include mq(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mq(desktop-sm) {
+    gap: gutter(large);
+  }
+
+  @include mq(desktop-xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.example__card {
+  background: color(red--default);
+  
+  @include mqBetween(phone-xs, phone-md) {
+    height: rem(200);
+  }
+
+  @include mqBetween(tablet, desktop-sm) {
+    height: rem(220);
+  }
+
+  @include mq(desktop-lg) {
+    height: rem(300);
+  }
+}
+
+
+.button--ha {
+  @include button-theme()
+}
+
+// ! example taken from a real project:
+/*
+
+.employee-card {
+  display: flex;
+  flex-direction: column;
+
+  @include mqBetween(phone-xs, phone-md) {
+    margin-bottom: gutter(large);
+  }
+  
+  @include mq(tablet) {
+    margin-left: gutter(large);
+    margin-bottom: rem(40);
+    flex: 0 0 calc((100% / 2) - #{gutter(large)});
+  }
+
+  @include mq(desktop-lg) {
+    flex: 0 0 calc((100% / 4) - #{gutter(large)});
+  }
+}
+
+*/
+
+.testimage {
+  width: 500px;
+  height: 500px;
+  background: url('assets/images/sweets.png');
+}
+
+p {
+  font-family: 'PlayfairDisplay';
+}

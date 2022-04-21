@@ -1,0 +1,19 @@
+.intro {
+  padding: rem(20) 0;
+}
+
+.intro-grid {
+  display: grid;
+}
+
+.intro__heading {
+  grid-column: 1 / span 12;
+  margin-bottom: rem(20);
+}
+
+.intro__column {
+  grid-column: span 12;
+  @include mq(tablet) {
+    grid-column: span 6;
+  }
+}

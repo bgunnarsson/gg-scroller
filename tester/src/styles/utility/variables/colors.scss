@@ -1,0 +1,22 @@
+// Colors
+$colors: (
+  red--default: #FC363B,
+  blue--default: blue,
+  gray--border: #D7D7D7,
+  gray--light: #f8f8f8,
+  gray--disabled: #ddd,
+
+  text--default: #333333,
+  text--light: #757575,
+  
+  // Umbraco
+  umbraco--blue: #3645b0,
+  umbraco--pink: #fa9fa1,
+  umbraco--yellow: #f2db09,
+  umbraco--black: #000,
+);
+
+@function color($key, $alpha: 1) {
+  $color: map-get($colors, $key);
+  @return rgba($color, $alpha);
+}

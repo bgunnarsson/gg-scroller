@@ -1,0 +1,41 @@
+@mixin heading-theme($FontSize: font-size(large),
+  $LineHeight: rem(36),
+  $TextTransform: inherit,
+) {
+  font-size: $FontSize;
+  line-height: $LineHeight;
+  color: color(text--default);
+}
+
+.heading {
+  font-weight: weight(bold);
+  word-break: break-word;
+}
+
+.heading--large {
+  @include heading-theme(font-size(large),
+    line-height(large));
+}
+
+.heading--medium {
+  @include heading-theme(font-size(medium),
+    line-height(medium));
+}
+
+.heading--small {
+  @include heading-theme(font-size(small),
+    line-height(small));
+}
+
+.heading--xsmall {
+  @include heading-theme(font-size(xsmall),
+    line-height(xsmall));
+}
+
+.heading--uppercase {
+  text-transform: uppercase;
+}
+
+.heading--margin {
+  margin-bottom: rem(30);
+}

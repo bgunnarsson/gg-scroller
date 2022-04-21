@@ -1,0 +1,11 @@
+$box-shadows: (
+  reset: 0 0 0 rgba(0, 0, 0, 0),
+);
+
+@mixin shadow-outline($color) {
+  box-shadow: 0 0 0 rem(1) $color;
+}
+
+@function box-shadow($key) {
+	@return map-get($box-shadows, $key);
+}

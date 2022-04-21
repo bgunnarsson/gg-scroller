@@ -1,0 +1,203 @@
+// Support functions and mixins
+@function breakpoint-next($name, $breakpoints: $breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+	$n: index($breakpoint-names, $name);
+	@return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+@function breakpoint-min($name, $breakpoints: $breakpoints) {
+	$min: map-get($breakpoints, $name);
+	@return if($min != 0, $min, null);
+}
+
+@function breakpoint-max($name, $breakpoints: $breakpoints) {
+  $next: breakpoint-next($name, $breakpoints);
+  @return if($next, breakpoint-min($next, $breakpoints) - rem(.02), null);
+}
+
+@function breakpoint-infix($name, $breakpoints: $breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, '', '-#{$name}');
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $breakpoints: $breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+@mixin media-breakpoint-down($name, $breakpoints: $breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    /* stylelint-disable-next-line */
+    @media (max-width: $max) {
+      @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}
+
+// Media that spans multiple breakpoint widths.
+// Makes the @content apply between the min and max breakpoints
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $breakpoints) {
+  $min: breakpoint-min($lower, $breakpoints);
+  $max: breakpoint-max($upper, $breakpoints);
+
+  @if $min != null and $max != null {
+    /* stylelint-disable-next-line */
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+  @else if $max == null {
+    @include media-breakpoint-up($lower) {
+      @content;
+    }
+  }
+  @else if $min == null {
+    @include media-breakpoint-down($upper) {
+      @content;
+    }
+  }
+}
+
+// Custom media queries
+@mixin mqBetween($lower, $upper, $breakpoints: $breakpoints) {
+  $min: breakpoint-min($lower, $breakpoints);
+  $max: breakpoint-max($upper, $breakpoints);
+
+  @if $min != null and $max != null {
+    /* stylelint-disable-next-line */
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+  @else if $max == null {
+    @include media-breakpoint-up($lower, $breakpoints) {
+      @content;
+    }
+  }
+  @else if $min == null {
+    @include media-breakpoint-down($upper, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+@mixin mqOnly($name, $breakpoints: $breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  $max: breakpoint-max($name, $breakpoints);
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include media-breakpoint-up($name, $breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include media-breakpoint-down($name, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+// Main media query
+@mixin mq($name, $breakpoints: $breakpoints) {
+	$min: breakpoint-min($name, $breakpoints);
+	@if $min {
+		@media (min-width: $min) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+@mixin mobile-only {
+	@include mqBetween(phone-xs, phone-md) {
+		@content;
+	}
+}
+
+
+// Media label
+@if $showMediaLabel == true {
+  body::after {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: zindex(infinity);
+    padding: rem(10) rem(9) rem(6) rem(13);
+    font-size: rem(10);
+    line-height: 1;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: rem(2);
+    
+    font-weight: weight(bold);
+
+    @include mq(phone-xs) {
+      content: 'Mobile XS';
+      background: violet;
+    }
+
+    @include mq(phone-sm) {
+      content: 'Mobile SM';
+      color: #000;
+      background: #ffeb3b;
+    }
+
+    @include mq(phone-md) {
+      content: 'Mobile MD';
+      color: #fff;
+      background: #5677fc;
+    }
+
+    @include mq(tablet) {
+      content: 'Tablet';
+      background: #009688;
+    }
+
+    @include mq(desktop-sm) {
+      content: 'Desktop SM';
+      background: #ff9800;
+    }
+
+    @include mq(desktop-lg) {
+      content: 'Desktop LG';
+      background: #e51c23;
+    }
+
+    @include mq(desktop-xl) {
+      content: 'Desktop XL';
+      background: #9c27b0;
+    }
+
+    @include mq(desktop-xxl) {
+      content: 'Desktop XXL';
+      background: #1abc9c;
+    }
+
+    @include mq(desktop-xxxl) {
+      content: 'Desktop XXXL';
+      background: #34495e;
+    }
+
+    @include mq(desktop-xxxxl) {
+      content: 'Desktop XXXXL';
+      background: brown;
+    }
+  }
+}

@@ -1,0 +1,152 @@
+
+@mixin button-theme(
+	$TextColor: #fff,
+	$HoverTextColor: #fff,
+
+  $BorderColor: color(red--default),
+  $HoverBorderColor: color(red--default),
+
+  $BackgroundColor: color(red--default),
+  $HoverBackgroundColor: lighten(color(red--default), 10%),
+
+  $Padding: rem(20) rem(30) rem(19) rem(30),
+
+  $BorderRadius: 0,
+  $BorderWidth: rem(1),
+) {
+  padding: $Padding;
+  color: $TextColor;
+  background-color: $BackgroundColor;
+  
+  // ! borders so the button will always match an input element in height (without the border, it will always be 1px off)
+	border-width: $BorderWidth;
+	border-color: $BorderColor;
+  border-radius: $BorderRadius;
+
+
+  svg,
+  svg > path {
+    fill: $TextColor;
+  }
+  
+  // ! The reasoning for encapsulating every hover effect in a media query is to prevent the need to double tap on mobile devices.
+  @include mq(desktop-sm) {
+    &:not(.button--disabled) {
+      &:hover {
+        color: $HoverTextColor;
+        background-color: $HoverBackgroundColor;
+        border-color: $HoverBorderColor; // TODO: Add this to the starter
+        
+        svg,
+        svg path { 
+          fill: $HoverTextColor;
+        }
+      }
+    }
+  }
+}
+
+// Button base
+.button {
+  // display / position
+	position: relative;
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: center;
+  align-items: center;
+
+  min-height: button-size(default);
+
+  // transform / transition
+	transform: translateY(0);
+  transition: color .4s ease-in-out, background-color .4s ease-in-out, border-color .4s ease-in-out;
+  
+  // fonts
+	font-family: font(text--default);
+  font-size: font-size(base);
+	font-weight: weight(bold);
+  
+  // alignment
+  vertical-align: middle;
+
+  // Border
+  border-style: solid;
+
+  .button__icon {
+    line-height: 0;
+  }
+
+
+  // ! this helps with getting the correct event.target in javascript clicks.
+	> * {
+		pointer-events: none;
+	}
+
+	svg,
+	svg path {
+		transition: fill .4s ease-in-out;
+  }
+
+	&:active {
+		transform: translateY(rem(1));
+	}
+}
+
+// Button themes
+.button--default {
+  @include button-theme();
+}
+
+.button__icon {
+  margin-right: rem(15);
+}
+
+.button--different {
+  @include button-theme(
+    #fff,
+    #fff,
+    color(blue--default),
+    color(blue--default),
+    color(blue--default),
+    lighten(color(blue--default), 10%)
+  );
+}
+
+.button--border-gray {
+  @include button-theme(
+      $TextColor: color(text--default),
+      $HoverTextColor: #fff,
+    
+      $BorderColor: color(gray--border),
+      $HoverBorderColor: color(red--default),
+    
+      $BackgroundColor: transparent,
+      $HoverBackgroundColor: color(red--default),
+  );
+}
+
+.button--square {
+  padding: 0;
+
+  @include square(button-size(default));
+
+  .button__icon {
+    margin: 0;
+  }
+}
+
+.button--disabled,
+.button[disabled] {
+  background: color(gray--disabled);
+  border-color: color(gray--disabled);
+  cursor: not-allowed;
+
+  // ! the media query prevents double tapping on mobile devices
+  @include mq(desktop-sm) {
+    &:hover {
+      cursor: not-allowed;
+      background: color(gray--disabled);
+      border-color: color(gray--disabled);
+    }
+  }
+}

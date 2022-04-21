@@ -1,0 +1,15 @@
+
+{% macro TextBlock(props) %}
+{# block list editor item in Umbraco #}
+  <div class="block">
+    {{ props.text }}
+    {# A component that can be used in sections or blocks #}
+    {{ Button({
+      text: "Single manufacturer", 
+      link: "/",
+      isHollowDark: true,
+      noText: false,
+      class: "button--large"
+    }) }}
+  </div>
+{% endmacro %}

@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "jsx": "react",
+    "baseUrl": "./",
+    "target": "es5",
+    "module": "esnext",
+    "lib": [
+      "dom",
+      "es5",
+      "es2015.promise"
+    ],
+    "forceConsistentCasingInFileNames": false,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noImplicitReturns": false,
+    "noImplicitThis": true,
+    "preserveSymlinks": false,
+    "sourceMap": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "strictNullChecks": false,
+    "outDir": "../public/build",
+    "rootDir": "../",
+    "paths": {
+      "components": [
+        "src/scripts/components/index.ts"
+      ],
+      "components/*": [
+        "src/scripts/components/*"
+      ],
+      "utility/*": [
+        "src/scripts/utility/*"
+      ],
+      "interfaces": [
+        "src/scripts/utility/interfaces.ts"
+      ],
+      "polyfills/": [
+        "src/scripts/utility/polyfills.ts"
+      ]
+    },
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "webpack"
+  ],
+  "typeRoots": [
+    "node_modules/@types"
+  ]
+}

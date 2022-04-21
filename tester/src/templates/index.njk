@@ -1,0 +1,29 @@
+{% extends "extends/template.njk" %}
+{% from "sections/introSection.njk" import IntroSection %}
+
+{% set page = {
+  title: "Vettvangur"
+} %}
+
+{% set introSectionProps = {
+  title: 'Lorem ipsum dolor',
+  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at facilisis tellus, lobortis lobortis velit. Donec non magna vel augue malesuada lobortis vitae in lacus. Nunc massa sapien, rhoncus nec efficitur vel, aliquam at quam. Fusce lacinia sit amet urna hendrerit eleifend. Nullam non faucibus lacus. Donec nec tincidunt elit. Integer venenatis pretium est, non pulvinar justo viverra eget. Cras lobortis feugiat eros, in luctus eros consequat nec. Vestibulum viverra tincidunt ultricies.',
+  image: 'https://placeimg.com/640/480/animals'
+} %}
+
+{% block Content %}
+
+  <main class="main">
+
+    {{ IntroSection({
+      title: introSectionProps.title,
+      text: introSectionProps.text,
+      image: introSectionProps.image
+    }) }}
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at facilisis tellus, lobortis lobortis velit. Donec non magna vel augue malesuada lobortis vitae in lacus. Nunc massa sapien, rhoncus nec efficitur vel, aliquam at quam. Fusce lacinia sit amet urna hendrerit eleifend. Nullam non faucibus lacus. Donec nec tincidunt elit. Integer venenatis pretium est, non pulvinar justo viverra eget. Cras lobortis feugiat eros, in luctus eros consequat nec. Vestibulum viverra tincidunt ultricies.</p>
+    <div class="testimage"/>
+
+    {# Sections are added like we do in Umbraco #}
+
+  </main>
+{% endblock %}

@@ -1,0 +1,63 @@
+{
+  "name": "vettvangur",
+  "author": "Vettvangur ehf",
+  "private": true,
+  "version": "1.0.0",
+  "browserslist": [
+    "last 2 versions",
+    "> 5%"
+  ],
+  "engines": {
+    "node": "16.14.2"
+  },
+  "dependencies": {
+    "focus-visible": "^5.2.0"
+  },
+  "devDependencies": {
+    "@epegzz/sass-vars-loader": "^6.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/parser": "^4.31.1",
+    "autoprefixer": "^10.3.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^6.2.0",
+    "css-minimizer-webpack-plugin": "^3.0.2",
+    "es6-promise": "^4.2.8",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.24.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.2.0",
+    "node-sass-glob-importer": "^3.0.2",
+    "nunjucks": "^3.2.3",
+    "postcss": "^8.3.6",
+    "postcss-loader": "^6.1.1",
+    "sass": "^1.37.5",
+    "sass-loader": "^12.6.0",
+    "sass-resources-loader": "^2.2.4",
+    "simple-nunjucks-loader": "^3.2.0",
+    "terser-webpack-plugin": "^5.1.4",
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.4.3",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.50.0",
+    "webpack-bundle-analyzer": "^4.4.2",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^4.8.1",
+    "webpack-merge": "^5.8.0"
+  },
+  "scripts": {
+    "build": "webpack --config ./webpack --mode=production",
+    "build:njks": "webpack --config ./webpack --mode=production --env njksProd",
+    "dev": "webpack serve --config ./webpack --mode=development --progress --hot",
+    "cidevbuild": "webpack --config ./webpack",
+    "dev:njks": "webpack serve --config ./webpack --mode=development --env njksDev",
+    "lint:js": "eslint --ext .js src/scripts/",
+    "stats": "webpack --config ./webpack --mode=production --json > dist/stats.json && webpack-bundle-analyzer dist/stats.json",
+    "clean:unix": "rm -rf node_modules && npm i",
+    "clean:pc": "rd /s /q node_modules && npm i",
+    "clean:cache": "rm -rf [package-lock.json] node_modules && npm cache clean -f && npm i"
+  },
+  "target": "web"
+}

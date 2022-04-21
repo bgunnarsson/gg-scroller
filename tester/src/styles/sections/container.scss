@@ -1,0 +1,71 @@
+// ! If you do not need all the sizes then you just remve the ones you dont need.
+
+$container-max-widths: (
+  md: rem(540),
+  tb: rem(576),
+  dsm: rem(776),
+  lg: rem(992),
+  xl: rem(1125),
+  xxl: rem(1280),
+  xxxl: rem(1300),
+  xxxxl: rem(1400)
+);
+
+@function container($key) {
+	$selection: map-get($container-max-widths, $key);
+	@return $selection;
+}
+
+.container,
+.container--flex {
+
+  @include mqBetween(phone-xs, phone-md) {
+    max-width: 100%;
+  }
+  
+	// Uncomment this if you want a padding on the container for mobile devices and tablet (replace tablet with phone-md for only mobile devices)
+	// @include mqBetween(phone-xs, tablet) {
+	// 	padding: 0 rem(20);
+	// }
+
+  @include mq(tablet) {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include mqOnly(phone-md) { 
+    max-width: container(md);
+  }
+
+  @include mqOnly(tablet) { 
+    max-width: container(tb);
+  }
+
+  @include mqOnly(desktop-sm) { 
+    max-width: container(dsm);
+  }
+
+  @include mqOnly(desktop-lg) { 
+    max-width: container(lg);
+  }
+
+  @include mqOnly(desktop-xl) { 
+    max-width: container(xl);
+  }
+
+  @include mqOnly(desktop-xxl) { 
+    max-width: container(xxl);
+  }
+
+  @include mqOnly(desktop-xxxl) { 
+    max-width: container(xxxl);
+  }
+
+  @include mqOnly(desktop-xxxxl) { 
+    max-width: container(xxxxl);
+  }
+}
+
+.container--flex {
+	display: flex;
+}

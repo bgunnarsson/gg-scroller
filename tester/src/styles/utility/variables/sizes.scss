@@ -1,0 +1,8 @@
+
+$button-sizes: (
+  default: rem(60),
+);
+
+@function button-size($key) {
+  @return map-get($button-sizes, $key);
+}

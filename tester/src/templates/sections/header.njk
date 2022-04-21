@@ -1,0 +1,9 @@
+{% from "svg/loadsvg.njk" import LoadSvg %}
+
+{% macro Header(props) %}
+  <header class="header">
+    <div class="container">
+      {{ LoadSvg('logo') }}
+    </div>
+  </header>
+{% endmacro %}

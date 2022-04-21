@@ -1,0 +1,11 @@
+$indexes: (
+  top: 3,
+  middle: 2,
+  bottom: 1,
+  infinity: 9999, // and beyond!
+);
+
+// ! reson for this name is that SASS has a default function named index (see the media queries file).
+@function zindex($key) {
+  @return map-get($indexes, $key);
+}

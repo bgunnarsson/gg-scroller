@@ -1,0 +1,83 @@
+.overlay-grid {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity .4s ease-in-out, visibility .4s ease-in-out;
+
+  @include mqBetween(phone-xs, phone-md) {
+    display: none;
+  }
+}
+
+.overlay-grid__column {
+  height: 100vh;
+  background: #FFBCBC;
+  transform: scaleY(0.6);
+  transition: transform .55s ease-in-out;
+  transition-delay: .4s;
+  // transform-origin: 50% 100%;
+
+  @include mq(desktop-sm) {
+    grid-column: span 1;
+  }
+}
+
+.overlay-grid__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: rem(10);
+  left: rem(10);
+  z-index: 9999;
+  background: #ed0f0f;
+  width: rem(43);
+  height: rem(43);
+  border-radius: rem(7);
+  transition: background  .4s, color .4s;
+
+  svg {
+    width: rem(32);
+    height: rem(23);
+  }
+
+  path {
+    fill: #fff;
+    transition: fill .4s;
+  }
+
+  > * {
+    pointer-events: none;
+  }
+}
+
+.overlay-grid__button--active {
+  background: #fff;
+
+  path {
+    fill: #ed0f0f;
+  }
+}
+
+.overlay-grid--show {
+  opacity: .4;
+  visibility: visible;
+
+  transition-delay: .15s;
+
+  .overlay-grid__column {
+    transform: scaleY(1);
+    transition-delay: .2s;
+  }
+}

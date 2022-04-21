@@ -1,0 +1,32 @@
+{% from "blocks/imageBlock.njk" import ImageBlock %}
+{% from "blocks/textBlock.njk" import TextBlock %}
+
+{% macro IntroSection(props) %}
+
+{# Sections are hard coded into templates and include Blocks (block list editor items in Umbraco) #}
+
+  <section class="section intro">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro__heading">
+          <h1>{{ props.title }}</h1>
+        </div>
+        <div class="intro__column">
+
+          {{ TextBlock({
+	          text: props.text
+	        }) }}
+
+        </div>
+        <div class="intro__column">
+
+          {{ ImageBlock({
+	          image: props.image 
+	        }) }}
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endmacro %}

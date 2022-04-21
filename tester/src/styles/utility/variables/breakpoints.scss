@@ -1,0 +1,16 @@
+$breakpoints: (
+	phone-xs: 0,
+	phone-sm: rem(321),
+	phone-md: rem(426),
+	tablet: rem(576),
+	desktop-sm: rem(775),
+	desktop-lg: rem(992),
+	desktop-xl: rem(1200),
+	desktop-xxl: rem(1280),
+	desktop-xxxl: rem(1367),
+	desktop-xxxxl: rem(1740),
+);
+
+@function breakpoint($key) {
+	@return map-get($breakpoints, $key);
+}

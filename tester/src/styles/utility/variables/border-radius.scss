@@ -1,0 +1,10 @@
+$border-radius: (
+  small: rem(3),
+  large: rem(8),
+	rounded: rem(100),
+	circle: 50%,
+);
+
+@function radius($key) {
+  @return map-get($border-radius, $key);
+}
