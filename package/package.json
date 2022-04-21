@@ -1,6 +1,6 @@
 {
   "name": "@gunnarssongroup/scrolltrigger-helper",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "B. Gunnarsson",
   "homepage": "https://github.com/bgunnarsson/gg-scroller",
   "description": "GSAP ScrollTrigger Helper",
